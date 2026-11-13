@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --bg-canvas: #fdfbf7;
+  --bg-surface: #f4efe6;
+  --bg-surface-elevated: #ffffff;
+  --bg-input: #efebe2;
+  --text-primary: #1a1816;
+  --text-secondary: #5c5349;
+  --text-muted: #7c7166;
+  --border-hairline: rgba(26, 24, 22, 0.09);
+  --border-strong: rgba(26, 24, 22, 0.18);
+  --accent-amber: #c97a07;
+  --accent-amber-bright: #f39c12;
+  --accent-amber-text: #ffffff;
+  --accent-indigo: #4f46e5;
+  --accent-ochre: #9a652e;
+}
+
+.dark {
+  --bg-canvas: #121316;
+  --bg-surface: #181a1f;
+  --bg-surface-elevated: #1f2229;
+  --bg-input: #16181d;
+  --text-primary: #e3e2e6;
+  --text-secondary: #d8c3ad;
+  --text-muted: #a18d7a;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent-amber: #f39c12;
+  --accent-amber-bright: #ffbe70;
+  --accent-amber-text: #121316;
+  --accent-indigo: #6366f1;
+  --accent-ochre: #e0a96d;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Editorial Obsidian 3D Book Jacket Hover & Spine Crease */
+.book-jacket-stage {
+  perspective: 1000px;
+}
+
+.book-jacket-card {
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .book-jacket-card {
+  transform: rotateX(2deg) rotateY(-2.5deg) translateY(-4px);
+}
+
+.book-spine-crease {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(0, 0, 0, 0.35) 3px,
+    rgba(255, 255, 255, 0.08) 6px,
+    transparent 14px
+  );
+}
+
+@keyframes obsidianPulse {
+  0%,
+  100% {
+    border-color: rgba(243, 156, 18, 0.45);
+  }
+  50% {
+    border-color: rgba(243, 156, 18, 0.95);
+  }
+}
+
+.dropzone-active {
+  animation: obsidianPulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .book-jacket-card,
+  body {
+    transition: none;
+  }
+  .group:hover .book-jacket-card {
+    transform: none;
+  }
+  .dropzone-active {
+    animation: none;
+  }
+}

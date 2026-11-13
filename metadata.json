@@ -1,0 +1,8 @@
+{
+  "name": "TIENDA DE LIBROS ESTHER",
+  "description": "Plataforma literaria bilingüe (ES / FR): librería digital, lector de capítulos y estudio de publicación de manuscritos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
