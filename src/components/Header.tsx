@@ -15,7 +15,7 @@ export function Header({ t, cartCount, onOpenCart }: HeaderProps) {
           href="#top"
           className="font-serif text-xl font-semibold tracking-tight text-[var(--text-primary)] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-amber)] rounded-sm"
         >
-          {t.brandName}
+          EDITORIAL ESTHER
         </a>
 
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[var(--text-secondary)]">
